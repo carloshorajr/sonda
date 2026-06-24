@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="cards">
+
+    <div class="metric-card">
+        <div class="metric-title">Hostname</div>
+        <div class="metric-value">{{ hostname }}</div>
+    </div>
+
+    <div class="metric-card">
+        <div class="metric-title">Uptime</div>
+        <div class="metric-value">{{ uptime }}</div>
+    </div>
+
+    <div class="metric-card">
+        <div class="metric-title">CPU</div>
+        <div class="metric-value">{{ cpu }}%</div>
+    </div>
+
+    <div class="metric-card">
+        <div class="metric-title">Memória</div>
+        <div class="metric-value">{{ memory }}%</div>
+    </div>
+
+    <div class="metric-card">
+        <div class="metric-title">IP</div>
+        <div class="metric-value">{{ ip }}</div>
+    </div>
+
+    <div class="metric-card">
+        <div class="metric-title">Disco</div>
+        <div class="metric-value">{{ disk }}%</div>
+    </div>
+
+</div>
+
+{% endblock %}

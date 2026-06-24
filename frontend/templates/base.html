@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<title>Sonda</title>
+
+<style>
+
+.page-header{
+    background:white;
+    border-radius:16px;
+    padding:24px;
+    margin-bottom:20px;
+    box-shadow:0 2px 12px rgba(0,0,0,.08);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.page-header-left h1{
+    font-size:28px;
+    font-weight:700;
+}
+
+.page-header-left p{
+    color:#64748b;
+}
+
+.page-header-right{
+    text-align:right;
+}
+
+.badge{
+    display:inline-block;
+    background:#dcfce7;
+    color:#166534;
+    padding:6px 12px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:600;
+    margin-bottom:6px;
+}
+
+.version{
+    color:#64748b;
+    font-size:14px;
+}
+
+.sidebar{
+    width:240px;
+    transition:all .3s ease;
+}
+
+.sidebar.collapsed{
+    width:70px;
+}
+
+.sidebar.collapsed .logo{
+    display:none;
+}
+
+.sidebar.collapsed .label{
+    display:none;
+}
+
+.sidebar.collapsed .menu a{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:12px 0;
+}
+
+.sidebar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+#toggleSidebar{
+    background:none;
+    border:none;
+    color:white;
+    cursor:pointer;
+    font-size:22px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f6f9;
+}
+
+.layout{
+    display:flex;
+    min-height:100vh;
+}
+
+.sidebar{
+    width:240px;
+    background:#1f2937;
+    color:white;
+    padding:20px;
+}
+
+.sidebar.collapsed .icon{
+    margin-right:0;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    border-radius:8px;
+}
+
+.menu a:hover{
+    background:#374151;
+}
+
+.menu a.active{
+    background:#374151;
+    border-left:3px solid #3b82f6;
+}
+
+.menu a.active .label{
+    font-weight:600;
+}
+
+.content{
+    flex:1;
+    padding:30px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+.metric-card{
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 2px 12px rgba(0,0,0,.08);
+}
+
+.metric-title{
+    color:#64748b;
+    font-size:13px;
+}
+
+.metric-value{
+    font-size:20px;
+    font-weight:700;
+    margin-top:10px;
+}
+
+.icon{
+    width:24px;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    margin-right:12px;
+}
+
+.icon i{
+    font-size:16px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <div class="logo">
+                SONDA
+            </div>
+
+            <button id="toggleSidebar">
+                <i class="fa fa-bars"></i>
+            </button>
+
+        </div>
+
+        <nav class="menu">
+
+            <a href="/" class="{% if current_page == '/' %}active{% endif %}">
+                <span class="icon">
+                    <i class="fa fa-home"></i>
+                </span>
+                <span class="label">Dashboard</span>
+            </a>
+
+            <a href="/settings" class="{% if current_page == '/settings' %}active{% endif %}">
+                <span class="icon">
+                    <i class="fa fa-cog"></i>
+            </span>
+                <span class="label">Configurações</span>
+            </a>
+
+            <a href="/metrics" class="{% if current_page == '/metrics' %}active{% endif %}">
+                <span class="icon">
+                    <i class="fa fa-bar-chart"></i>
+                </span>
+                <span class="label">Métricas</span>
+            </a>
+
+            <a href="/events" class="{% if current_page == '/events' %}active{% endif %}">
+                <span class="icon">
+                    <i class="fa fa-list-alt"></i>
+                </span>
+                <span class="label">Eventos</span>
+            </a>
+
+            <a href="/system" class="{% if current_page == '/system' %}active{% endif %}">
+                <span class="icon">
+                    <i class="fa fa-desktop"></i>
+                </span>
+                <span class="label">Sistema</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <main class="content">
+
+        <div class="page-header">
+
+            <div class="page-header-left">
+
+                <h1>{{ page_title }}</h1>
+
+                <p>{{ page_subtitle }}</p>
+
+            </div>
+
+            <div class="page-header-right">
+
+                <div class="badge">
+                    Online
+                </div>
+
+                <div class="version">
+                    v2.0-dev
+                </div>
+
+            </div>
+
+        </div>
+
+        {% block content %}
+        {% endblock %}
+
+</main>
+
+</div>
+
+<script>
+
+const sidebar = document.getElementById("sidebar");
+const toggle = document.getElementById("toggleSidebar");
+
+if (localStorage.getItem("sidebarState") === "collapsed") {
+    sidebar.classList.add("collapsed");
+}
+
+toggle.addEventListener("click", () => {
+
+    sidebar.classList.toggle("collapsed");
+
+    if (sidebar.classList.contains("collapsed")) {
+        localStorage.setItem("sidebarState", "collapsed");
+    } else {
+        localStorage.setItem("sidebarState", "expanded");
+    }
+
+});
+
+</script>
+
+</body>
+</html>

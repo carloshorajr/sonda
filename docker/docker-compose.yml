@@ -1,0 +1,31 @@
+services:
+
+  sonda:
+
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+
+    container_name: sonda
+
+    restart: unless-stopped
+
+    ports:
+      - "8080:8080"
+
+    volumes:
+      - ../backend:/app/backend
+      - ../frontend:/app/frontend
+      - ../data:/app/data
+      - /etc/hostname:/etc/host_hostname:ro
+
+    environment:
+      - FLASK_ENV=development
+
+    command: >
+      flask
+      --app backend.app
+      run
+      --host=0.0.0.0
+      --port=8080
+      --debug
