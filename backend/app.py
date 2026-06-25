@@ -50,6 +50,7 @@ def events():
 def system():
 
     info = SystemService.get_system_info()
+    disk = SystemService.get_disk_usage()
 
     return render_template(
         "system.html",
@@ -64,9 +65,9 @@ def system():
 
         memory=info["memory_percent"],
 
-        disk=info["disk_percent"],
+        disk=disk,
 
-        ip=SystemService.get_ip(),
+        interfaces=SystemService.get_network_interfaces(),
 
         uptime=SystemService.get_uptime()
     )

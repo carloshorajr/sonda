@@ -1,5 +1,6 @@
 import psutil
 import socket
+import subprocess
 from datetime import datetime
 
 class SystemService:
@@ -52,31 +53,142 @@ class SystemService:
             delta.seconds % 3600
         ) // 60
 
-        return f"{days} Dias {hours} Horas {minutes} Minutos"
+        if days > 0:
+
+            return f"{days}d {hours}h {minutes}min"
+
+        return f"{hours}h {minutes}min"
     
     @staticmethod
-    def get_ip():
+    def get_network_interfaces():
+
+        interfaces = []
+
+        ignored = (
+            "lo",
+            "docker",
+            "br-",
+            "veth"
+        )
+
+        addrs = psutil.net_if_addrs()
+
+        stats = psutil.net_if_stats()
+
+        for name, addresses in addrs.items():
+
+            if name.startswith(ignored):
+                continue
+
+            ip = None
+            mac = None
+
+            for addr in addresses:
+
+                if addr.family == socket.AF_INET:
+
+                    ip = addr.address
+
+                elif addr.family == psutil.AF_LINK:
+
+                    mac = addr.address
+
+            if not ip:
+                continue
+
+            if name.startswith("eth"):
+                label = "Ethernet"
+
+            elif name.startswith("wlan"):
+                label = "Wi-Fi"
+
+            else:
+                label = name
+
+            ssid = None
+
+            if name.startswith("wlan"):
+
+                ssid = SystemService.get_wifi_ssid(name)
+
+            interfaces.append({
+
+                "name": name,
+
+                "label": label,
+
+                "ip": ip,
+
+                "mac": mac,
+
+                "ssid": ssid,
+
+                "status": (
+                    "UP"
+                    if stats[name].isup
+                    else "DOWN"
+                )
+
+            })
+
+        return interfaces
+    
+    @staticmethod
+    def get_wifi_ssid(interface):
 
         try:
 
-            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            result = subprocess.run(
 
-            s.connect(("8.8.8.8", 80))
+                [
+                    "nmcli",
+                    "-t",
+                    "-f",
+                    "GENERAL.CONNECTION",
+                    "device",
+                    "show",
+                    interface
+                ],
 
-            ip = s.getsockname()[0]
+                capture_output=True,
 
-            s.close()
+                text=True,
 
-            return ip
+                check=True
+
+            )
+
+            line = result.stdout.strip()
+
+            if ":" in line:
+
+                return line.split(":", 1)[1]
+
+            return None
 
         except Exception:
 
-            return "Não disponível"
+            return None
     
     @staticmethod
     def get_disk_usage():
 
-        return round(
-            psutil.disk_usage("/").percent,
-            1
-        )
+        usage = psutil.disk_usage("/")
+
+        total = round(usage.total / (1024 ** 3), 1)
+
+        used = round(usage.used / (1024 ** 3), 1)
+
+        free = round(usage.free / (1024 ** 3), 1)
+
+        return {
+
+            "percent": round(usage.percent, 1),
+
+            "used": used,
+
+            "free": free,
+
+            "total": total
+
+        }

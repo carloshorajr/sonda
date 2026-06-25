@@ -24,14 +24,68 @@
         <div class="metric-value">{{ memory }}%</div>
     </div>
 
-    <div class="metric-card">
-        <div class="metric-title">IP</div>
-        <div class="metric-value">{{ ip }}</div>
-    </div>
+    {% for iface in interfaces %}
 
     <div class="metric-card">
-        <div class="metric-title">Disco</div>
-        <div class="metric-value">{{ disk }}%</div>
+
+        <div class="metric-title">
+
+            {{ iface.label }}
+
+            ({{ iface.name }})
+
+        </div>
+
+        {% if iface.ssid %}
+
+        <div class="metric-subtitle">
+
+            {{ iface.ssid }}
+
+        </div>
+
+        {% endif %}
+
+        <div class="metric-value">
+
+            {{ iface.ip }}
+
+        </div>
+
+        {% if iface.mac %}
+
+        <div class="metric-subtitle">
+
+            MAC: {{ iface.mac }}
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    {% endfor %}
+
+    <div class="metric-card">
+
+        <div class="metric-title">
+
+            Disco
+
+        </div>
+
+        <div class="metric-subtitle">
+
+            {{ disk.used }} GB / {{ disk.total }} GB
+
+        </div>
+
+        <div class="metric-value">
+
+            {{ disk.percent }}%
+
+        </div>
+
     </div>
 
 </div>
