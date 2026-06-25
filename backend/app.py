@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from backend.services.system_service import SystemService
+from backend.services.network_service import NetworkService
 
 app = Flask(
     __name__,
@@ -67,7 +68,7 @@ def system():
 
         disk=disk,
 
-        interfaces=SystemService.get_network_interfaces(),
+        interfaces = NetworkService.get_network_interfaces(),
 
         uptime=SystemService.get_uptime()
     )

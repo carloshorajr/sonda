@@ -1,7 +1,8 @@
 import psutil
 import socket
-import subprocess
 from datetime import datetime
+
+from backend.services.network_service import NetworkService
 
 class SystemService:
 
@@ -58,117 +59,6 @@ class SystemService:
             return f"{days}d {hours}h {minutes}min"
 
         return f"{hours}h {minutes}min"
-    
-    @staticmethod
-    def get_network_interfaces():
-
-        interfaces = []
-
-        ignored = (
-            "lo",
-            "docker",
-            "br-",
-            "veth"
-        )
-
-        addrs = psutil.net_if_addrs()
-
-        stats = psutil.net_if_stats()
-
-        for name, addresses in addrs.items():
-
-            if name.startswith(ignored):
-                continue
-
-            ip = None
-            mac = None
-
-            for addr in addresses:
-
-                if addr.family == socket.AF_INET:
-
-                    ip = addr.address
-
-                elif addr.family == psutil.AF_LINK:
-
-                    mac = addr.address
-
-            if not ip:
-                continue
-
-            if name.startswith("eth"):
-                label = "Ethernet"
-
-            elif name.startswith("wlan"):
-                label = "Wi-Fi"
-
-            else:
-                label = name
-
-            ssid = None
-
-            if name.startswith("wlan"):
-
-                ssid = SystemService.get_wifi_ssid(name)
-
-            interfaces.append({
-
-                "name": name,
-
-                "label": label,
-
-                "ip": ip,
-
-                "mac": mac,
-
-                "ssid": ssid,
-
-                "status": (
-                    "UP"
-                    if stats[name].isup
-                    else "DOWN"
-                )
-
-            })
-
-        return interfaces
-    
-    @staticmethod
-    def get_wifi_ssid(interface):
-
-        try:
-
-            result = subprocess.run(
-
-                [
-                    "nmcli",
-                    "-t",
-                    "-f",
-                    "GENERAL.CONNECTION",
-                    "device",
-                    "show",
-                    interface
-                ],
-
-                capture_output=True,
-
-                text=True,
-
-                check=True
-
-            )
-
-            line = result.stdout.strip()
-
-            if ":" in line:
-
-                return line.split(":", 1)[1]
-
-            return None
-
-        except Exception:
-
-            return None
     
     @staticmethod
     def get_disk_usage():
