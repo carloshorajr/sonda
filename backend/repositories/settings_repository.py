@@ -12,7 +12,8 @@ class SettingsRepository:
     def load(cls):
 
         if not cls.SETTINGS_FILE.exists():
-            return {}
+
+            return cls.create_default()
 
         with open(cls.SETTINGS_FILE, "r", encoding="utf-8") as f:
 
@@ -30,3 +31,23 @@ class SettingsRepository:
                 indent=4,
                 ensure_ascii=False
             )
+    
+    @classmethod
+    def create_default(cls):
+
+        settings = Settings(
+            nome="Sonda",
+            cliente="",
+            local="",
+            descricao="",
+            uuid="",
+            heartbeat=60,
+            coleta=30,
+            timezone="America/Sao_Paulo",
+            idioma="pt-BR",
+            log_level="INFO"
+        )
+
+        cls.save(settings)
+
+        return settings

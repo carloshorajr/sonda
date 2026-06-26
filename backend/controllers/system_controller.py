@@ -23,3 +23,19 @@ class SystemController:
             "uptime": SystemService.get_uptime(),
             "settings": settings
         }
+
+class SettingsController:
+
+    @staticmethod
+    def get_page_data():
+
+        settings = SettingsRepository.load()
+
+        return {
+
+            "page_title": "Configurações",
+
+            "page_subtitle": "Gerenciamento da Sonda",
+
+            "settings": settings
+        }

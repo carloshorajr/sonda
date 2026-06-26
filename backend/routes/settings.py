@@ -9,6 +9,8 @@ def settings():
 
     return render_template(
         "settings.html",
+
         current_page=request.path,
+
         **SettingsController.get_page_data()
     )
