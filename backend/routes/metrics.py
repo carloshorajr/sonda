@@ -1,14 +1,14 @@
 from flask import Blueprint, render_template, request
 
-metrics_bp = Blueprint("metrics", __name__)
+from backend.controllers.metrics_controller import MetricsController
 
+metrics_bp = Blueprint("metrics", __name__)
 
 @metrics_bp.route("/metrics")
 def metrics():
 
     return render_template(
         "metrics.html",
-        page_title="Métricas",
-        page_subtitle="Indicadores coletados",
-        current_page=request.path
+        current_page=request.path,
+        **MetricsController.get_page_data()
     )
