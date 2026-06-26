@@ -8,6 +8,6 @@ class Event:
 
     level: str
 
-    title: str
+    source: str
 
     message: str

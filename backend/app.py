@@ -11,6 +11,8 @@ app = Flask(
     template_folder="../frontend/templates"
 )
 
+app.secret_key = "sonda-dev"
+
 app.register_blueprint(dashboard_bp)
 app.register_blueprint(settings_bp)
 app.register_blueprint(metrics_bp)

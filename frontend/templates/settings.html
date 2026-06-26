@@ -67,11 +67,12 @@
 
             <label>UUID</label>
 
-            <input
-                type="text"
-                name="uuid"
-                value="{{ settings.uuid }}"
-            >
+                <input
+                    type="text"
+                    name="uuid"
+                    value="{{ settings.uuid }}"
+                    readonly
+                >
 
         </div>
 
@@ -85,6 +86,9 @@
                     type="number"
                     name="heartbeat"
                     value="{{ settings.heartbeat }}"
+                    min="10"
+                    max="3600"
+                    step="1"
                 >
 
             </div>
@@ -97,6 +101,9 @@
                     type="number"
                     name="coleta"
                     value="{{ settings.coleta }}"
+                    min="5"
+                    max="3600"
+                    step="1"
                 >
 
             </div>

@@ -4,6 +4,8 @@ from dataclasses import asdict
 
 from backend.models.settings import Settings
 
+from backend.utils.identity import generate_uuid
+
 class SettingsRepository:
 
     SETTINGS_FILE = Path("data/settings.json")
@@ -12,14 +14,18 @@ class SettingsRepository:
     def load(cls):
 
         if not cls.SETTINGS_FILE.exists():
-
             return cls.create_default()
 
         with open(cls.SETTINGS_FILE, "r", encoding="utf-8") as f:
-
             data = json.load(f)
 
-            return Settings(**data)
+        settings = Settings(**data)
+
+        if not settings.uuid:
+            settings.uuid = generate_uuid()
+            cls.save(settings)
+
+        return settings
 
     @classmethod
     def save(cls, settings: Settings):
@@ -40,7 +46,7 @@ class SettingsRepository:
             cliente="",
             local="",
             descricao="",
-            uuid="",
+            uuid=generate_uuid(),
             heartbeat=60,
             coleta=30,
             timezone="America/Sao_Paulo",

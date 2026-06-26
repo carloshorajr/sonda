@@ -1,0 +1,44 @@
+[
+    {
+        "timestamp": "2026-06-26T19:17:24.419013",
+        "level": "INFO",
+        "source": "Teste",
+        "message": "Primeiro evento"
+    },
+    {
+        "timestamp": "2026-06-26T19:21:32.471443",
+        "level": "INFO",
+        "source": "Sistema",
+        "message": "Inicialização concluída"
+    },
+    {
+        "timestamp": "2026-06-26T19:21:39.719291",
+        "level": "WARNING",
+        "source": "Wi-Fi",
+        "message": "Sinal abaixo de 30%"
+    },
+    {
+        "timestamp": "2026-06-26T19:21:45.287968",
+        "level": "ERROR",
+        "source": "Docker",
+        "message": "Container parado"
+    },
+    {
+        "timestamp": "2026-06-26T19:25:37.713258",
+        "level": "INFO",
+        "source": "Configurações",
+        "message": "Configurações atualizadas."
+    },
+    {
+        "timestamp": "2026-06-26T19:25:57.452279",
+        "level": "INFO",
+        "source": "Configurações",
+        "message": "Configurações atualizadas."
+    },
+    {
+        "timestamp": "2026-06-26T19:26:11.892694",
+        "level": "INFO",
+        "source": "Configurações",
+        "message": "Configurações atualizadas."
+    }
+]
