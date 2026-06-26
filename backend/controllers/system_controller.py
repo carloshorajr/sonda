@@ -1,6 +1,7 @@
 from backend.services.system_service import SystemService
 from backend.services.network_service import NetworkService
 
+from backend.repositories.settings_repository import SettingsRepository
 
 class SystemController:
 
@@ -8,6 +9,7 @@ class SystemController:
     def get_page_data():
 
         info = SystemService.get_system_info()
+        settings = SettingsRepository.load()
 
         return {
             "page_title": "Sistema",
@@ -18,4 +20,5 @@ class SystemController:
             "disk": SystemService.get_disk_usage(),
             "interfaces": NetworkService.get_network_interfaces(),
             "uptime": SystemService.get_uptime(),
+            "settings": settings
         }

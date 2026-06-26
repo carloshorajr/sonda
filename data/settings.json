@@ -1,0 +1,9 @@
+{
+    "nome": "Sonda",
+    "cliente": "Empresa Teste",
+    "local": "",
+    "descricao": "",
+    "uuid": "",
+    "heartbeat": 60,
+    "coleta": 30
+}
