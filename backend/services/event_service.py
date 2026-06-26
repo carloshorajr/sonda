@@ -42,3 +42,12 @@ class EventService:
                 message=message
             )
         )
+    
+    @staticmethod
+    def list():
+
+        events = EventRepository.load()
+
+        print("EVENTOS:", len(events))
+
+        return events

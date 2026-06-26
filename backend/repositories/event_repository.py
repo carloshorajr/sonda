@@ -1,22 +1,20 @@
 import json
-from pathlib import Path
 from dataclasses import asdict
 from datetime import datetime
 
 from backend.models.event import Event
 
+from backend.core.paths import EVENTS_FILE
 
 class EventRepository:
-
-    EVENTS_FILE = Path("data/events.json")
 
     @classmethod
     def load(cls):
 
-        if not cls.EVENTS_FILE.exists():
+        if not EVENTS_FILE.exists():
             return []
 
-        with open(cls.EVENTS_FILE, "r", encoding="utf-8") as f:
+        with open(EVENTS_FILE, "r", encoding="utf-8") as f:
 
             data = json.load(f)
 
@@ -53,7 +51,7 @@ class EventRepository:
                 "message": e.message
             })
 
-        with open(cls.EVENTS_FILE, "w", encoding="utf-8") as f:
+        with open(EVENTS_FILE, "w", encoding="utf-8") as f:
 
             json.dump(
                 serialized,

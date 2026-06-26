@@ -1,22 +1,22 @@
 import json
-from pathlib import Path
+
 from dataclasses import asdict
 
 from backend.models.settings import Settings
 
 from backend.utils.identity import generate_uuid
 
-class SettingsRepository:
+from backend.core.paths import SETTINGS_FILE
 
-    SETTINGS_FILE = Path("data/settings.json")
+class SettingsRepository:
 
     @classmethod
     def load(cls):
 
-        if not cls.SETTINGS_FILE.exists():
+        if not SETTINGS_FILE.exists():
             return cls.create_default()
 
-        with open(cls.SETTINGS_FILE, "r", encoding="utf-8") as f:
+        with open(SETTINGS_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         settings = Settings(**data)
@@ -30,7 +30,7 @@ class SettingsRepository:
     @classmethod
     def save(cls, settings: Settings):
 
-        with open(cls.SETTINGS_FILE, "w", encoding="utf-8") as f:
+        with open(SETTINGS_FILE, "w", encoding="utf-8") as f:
             json.dump(
                 asdict(settings),
                 f,
