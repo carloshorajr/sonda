@@ -6,6 +6,8 @@ from backend.models.event import Event
 
 from backend.core.paths import EVENTS_FILE
 
+from backend.utils.datetime_utils import parse_datetime
+
 class EventRepository:
 
     @classmethod
@@ -24,7 +26,7 @@ class EventRepository:
 
             events.append(
                 Event(
-                    timestamp=datetime.fromisoformat(item["timestamp"]),
+                    timestamp=parse_datetime(item["timestamp"]),
                     level=item["level"],
                     source=item["source"],
                     message=item["message"]

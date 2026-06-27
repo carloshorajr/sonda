@@ -23,9 +23,22 @@
 
             <tr>
 
-                <td>{{ event.timestamp.strftime("%d/%m/%Y %H:%M:%S") }}</td>
+                <td>{{ event.timestamp.strftime("%d/%m/%y %H:%M") }}</td>
 
-                <td>{{ event.level }}</td>
+                <td>
+
+                {% if event.level == "INFO" %}
+                <span class="badge badge-info">INFO</span>
+
+                {% elif event.level == "WARNING" %}
+                <span class="badge badge-warning">WARNING</span>
+
+                {% elif event.level == "ERROR" %}
+                <span class="badge badge-error">ERROR</span>
+
+                {% endif %}
+
+                </td>
 
                 <td>{{ event.source }}</td>
 

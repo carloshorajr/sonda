@@ -1,4 +1,4 @@
-from datetime import datetime
+from backend.utils.datetime_utils import now
 
 from backend.models.event import Event
 from backend.repositories.event_repository import EventRepository
@@ -11,7 +11,7 @@ class EventService:
 
         EventRepository.add(
             Event(
-                timestamp=datetime.now(),
+                timestamp=now(),
                 level="INFO",
                 source=source,
                 message=message
@@ -23,7 +23,7 @@ class EventService:
 
         EventRepository.add(
             Event(
-                timestamp=datetime.now(),
+                timestamp=now(),
                 level="WARNING",
                 source=source,
                 message=message
@@ -36,7 +36,7 @@ class EventService:
 
         EventRepository.add(
             Event(
-                timestamp=datetime.now(),
+                timestamp=now(),
                 level="ERROR",
                 source=source,
                 message=message
