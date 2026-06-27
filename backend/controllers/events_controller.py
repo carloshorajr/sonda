@@ -17,5 +17,6 @@ class EventsController:
             "page_subtitle": "Registro de ocorrências",
             "events": events,
             "filters": filters,
-            "sources": EventService.sources()
+            "sources": EventService.sources(),
+            "statistics": EventService.statistics()
         }

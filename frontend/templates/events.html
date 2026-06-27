@@ -6,9 +6,41 @@
 
     <h2>Histórico de Eventos</h2>
 
-    <form method="GET" class="filters-panel">
+    <div class="stats-panel">
 
-        <!-- Período -->
+        <div class="stat-card stat-total">
+            <span class="stat-title">Total</span>
+            <span class="stat-value">{{ statistics.total }}</span>
+        </div>
+
+        <div class="stat-card stat-info">
+            <span class="stat-title">INFO</span>
+            <span class="stat-value">{{ statistics.info }}</span>
+        </div>
+
+        <div class="stat-card stat-warning">
+            <span class="stat-title">WARNING</span>
+            <span class="stat-value">{{ statistics.warning }}</span>
+        </div>
+
+        <div class="stat-card stat-error">
+            <span class="stat-title">ERROR</span>
+            <span class="stat-value">{{ statistics.error }}</span>
+        </div>
+
+        <div class="stat-card stat-24h">
+            <span class="stat-title">Últimas 24h</span>
+            <span class="stat-value">{{ statistics.last_24h }}</span>
+        </div>
+
+        <div class="stat-card stat-today">
+            <span class="stat-title">Hoje</span>
+            <span class="stat-value">{{ statistics.today }}</span>
+        </div>
+
+    </div>
+
+    <form method="GET" class="filters-panel">
 
         <div class="filter-item">
 
@@ -24,8 +56,6 @@
             </select>
 
         </div>
-
-        <!-- Nível -->
 
         <div class="filter-item">
 
@@ -53,8 +83,6 @@
             </select>
 
         </div>
-
-        <!-- Origem -->
 
         <div class="filter-item">
 

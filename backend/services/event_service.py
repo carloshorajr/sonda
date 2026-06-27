@@ -138,3 +138,65 @@ class EventService:
                 for event in events
             }
         )
+    
+    @staticmethod
+    def statistics():
+
+        events = EventRepository.load()
+
+        total = len(events)
+
+        info = sum(
+            1
+            for event in events
+            if event.level == "INFO"
+        )
+
+        warning = sum(
+            1
+            for event in events
+            if event.level == "WARNING"
+        )
+
+        error = sum(
+            1
+            for event in events
+            if event.level == "ERROR"
+        )
+
+        limite_24h = now() - timedelta(hours=24)
+
+        last_24h = sum(
+            1
+            for event in events
+            if event.timestamp >= limite_24h
+        )
+
+        inicio_hoje = now().replace(
+            hour=0,
+            minute=0,
+            second=0,
+            microsecond=0
+        )
+
+        today = sum(
+            1
+            for event in events
+            if event.timestamp >= inicio_hoje
+        )
+
+        return {
+
+            "total": total,
+
+            "info": info,
+
+            "warning": warning,
+
+            "error": error,
+
+            "last_24h": last_24h,
+
+            "today": today
+
+        }
