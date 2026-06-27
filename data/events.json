@@ -1,48 +1,54 @@
 [
     {
-        "timestamp": "2026-06-26T19:17:24.419013",
+        "timestamp": "2026-06-26T19:17:24.419013-03:00",
         "level": "INFO",
         "source": "Teste",
         "message": "Primeiro evento"
     },
     {
-        "timestamp": "2026-06-26T19:21:32.471443",
+        "timestamp": "2026-06-26T19:21:32.471443-03:00",
         "level": "INFO",
         "source": "Sistema",
         "message": "Inicialização concluída"
     },
     {
-        "timestamp": "2026-06-26T19:21:39.719291",
+        "timestamp": "2026-06-26T19:21:39.719291-03:00",
         "level": "WARNING",
         "source": "Wi-Fi",
         "message": "Sinal abaixo de 30%"
     },
     {
-        "timestamp": "2026-06-26T19:21:45.287968",
+        "timestamp": "2026-06-26T19:21:45.287968-03:00",
         "level": "ERROR",
         "source": "Docker",
         "message": "Container parado"
     },
     {
-        "timestamp": "2026-06-26T19:25:37.713258",
+        "timestamp": "2026-06-26T19:25:37.713258-03:00",
         "level": "INFO",
         "source": "Configurações",
         "message": "Configurações atualizadas."
     },
     {
-        "timestamp": "2026-06-26T19:25:57.452279",
+        "timestamp": "2026-06-26T19:25:57.452279-03:00",
         "level": "INFO",
         "source": "Configurações",
         "message": "Configurações atualizadas."
     },
     {
-        "timestamp": "2026-06-26T19:26:11.892694",
+        "timestamp": "2026-06-26T19:26:11.892694-03:00",
         "level": "INFO",
         "source": "Configurações",
         "message": "Configurações atualizadas."
     },
     {
         "timestamp": "2026-06-27T08:41:25.333296-03:00",
+        "level": "INFO",
+        "source": "Configurações",
+        "message": "Configurações atualizadas."
+    },
+    {
+        "timestamp": "2026-06-27T09:05:48.444075-03:00",
         "level": "INFO",
         "source": "Configurações",
         "message": "Configurações atualizadas."

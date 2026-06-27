@@ -3,13 +3,18 @@ from zoneinfo import ZoneInfo
 
 from backend.repositories.settings_repository import SettingsRepository
 
-def now():
+
+def get_timezone():
 
     settings = SettingsRepository.load()
 
-    return datetime.now(
-        ZoneInfo(settings.timezone)
-    )
+    return ZoneInfo(settings.timezone)
+
+
+def now():
+
+    return datetime.now(get_timezone())
+
 
 def parse_datetime(value: str):
 
