@@ -10,5 +10,5 @@ def events():
     return render_template(
         "events.html",
         current_page=request.path,
-        **EventsController.get_page_data()
+        **EventsController.get_page_data(request.args)
     )

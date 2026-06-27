@@ -6,6 +6,33 @@
 
     <h2>Histórico de Eventos</h2>
 
+    <form method="GET" style="margin-bottom:20px;">
+
+        <label><strong>Nível</strong></label>
+
+        <select name="level" onchange="this.form.submit()">
+
+            <option value="">Todos</option>
+
+            <option value="INFO"
+                {% if filters.get('level') == 'INFO' %}selected{% endif %}>
+                INFO
+            </option>
+
+            <option value="WARNING"
+                {% if filters.get('level') == 'WARNING' %}selected{% endif %}>
+                WARNING
+            </option>
+
+            <option value="ERROR"
+                {% if filters.get('level') == 'ERROR' %}selected{% endif %}>
+                ERROR
+            </option>
+
+        </select>
+
+    </form>
+
     <table class="table">
 
         <thead>
