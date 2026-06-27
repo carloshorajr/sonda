@@ -6,32 +6,96 @@
 
     <h2>Histórico de Eventos</h2>
 
-    <form method="GET" style="margin-bottom:20px;">
+    <form method="GET" class="filters-panel">
 
-        <label><strong>Nível</strong></label>
+        <!-- Período -->
 
-        <select name="level" onchange="this.form.submit()">
+        <div class="filter-item">
 
-            <option value="">Todos</option>
+            <label>Período</label>
 
-            <option value="INFO"
-                {% if filters.get('level') == 'INFO' %}selected{% endif %}>
-                INFO
-            </option>
+            <select name="period">
 
-            <option value="WARNING"
-                {% if filters.get('level') == 'WARNING' %}selected{% endif %}>
-                WARNING
-            </option>
+                <option value="">Tudo</option>
+                <option value="today">Hoje</option>
+                <option value="24h">Últimas 24h</option>
+                <option value="7d">Últimos 7 dias</option>
 
-            <option value="ERROR"
-                {% if filters.get('level') == 'ERROR' %}selected{% endif %}>
-                ERROR
-            </option>
+            </select>
 
-        </select>
+        </div>
 
-    </form>
+        <!-- Nível -->
+
+        <div class="filter-item">
+
+            <label>Nível</label>
+
+            <select name="level">
+
+                <option value="">Todos</option>
+
+                <option value="INFO"
+                    {% if filters.get('level') == 'INFO' %}selected{% endif %}>
+                    INFO
+                </option>
+
+                <option value="WARNING"
+                    {% if filters.get('level') == 'WARNING' %}selected{% endif %}>
+                    WARNING
+                </option>
+
+                <option value="ERROR"
+                    {% if filters.get('level') == 'ERROR' %}selected{% endif %}>
+                    ERROR
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- Origem -->
+
+        <div class="filter-item">
+
+            <label>Origem</label>
+
+            <select name="source">
+
+                <option value="">Todas</option>
+
+            </select>
+
+        </div>
+
+        <!-- Pesquisar -->
+
+        <div class="filter-item" style="min-width:260px;">
+
+            <label>Pesquisar</label>
+
+            <input
+                type="text"
+                name="search"
+                value="{{ filters.get('search', '') }}"
+                placeholder="Mensagem ou origem..."
+            >
+
+        </div>
+
+        <div class="filter-buttons">
+
+            <button type="submit" class="btn btn-primary">
+                Aplicar
+            </button>
+
+            <a href="/events" class="btn btn-outline">
+                Limpar
+            </a>
+
+        </div>
+
+</form>
 
     <table class="table">
 

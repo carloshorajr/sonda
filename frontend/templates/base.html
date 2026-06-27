@@ -269,25 +269,43 @@ body{
 
 }
 
-.btn-primary{
+.btn{
 
-    margin-top:10px;
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    height:44px;
+
+    min-width:110px;
+
+    padding:0 22px;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    box-sizing:border-box;
+
+    transition:.2s;
+
+}
+
+.btn-primary{
 
     background:#2563eb;
 
     color:white;
 
     border:none;
-
-    border-radius:8px;
-
-    padding:12px 24px;
-
-    cursor:pointer;
-
-    font-size:15px;
-
-    font-weight:600;
 
 }
 
@@ -401,6 +419,77 @@ input[readonly]{
 .table th:nth-child(3),
 .table td:nth-child(3){
     width:180px;
+}
+
+.filters-panel{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    align-items:flex-end;
+
+    margin-bottom:25px;
+
+}
+
+.filter-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    min-width:180px;
+
+}
+
+.filter-item label{
+
+    margin-bottom:6px;
+
+    font-weight:600;
+
+}
+
+.filter-item input,
+.filter-item select{
+
+    padding:10px 12px;
+
+    border:1px solid #d7dce5;
+
+    border-radius:8px;
+
+    font-size:14px;
+
+    background:white;
+
+}
+
+.filter-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.btn-outline{
+
+    background:white;
+
+    color:#44536a;
+
+    border:1px solid #cfd7e6;
+
+}
+
+.btn-outline:hover{
+
+    background:#f4f7fb;
+
 }
 
 </style>
