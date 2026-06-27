@@ -89,6 +89,42 @@ class EventService:
                 if event.timestamp >= limite
             ]
 
+        level = filters.get("level")
+
+        if level:
+
+            events = [
+                event
+                for event in events
+                if event.level == level
+            ]
+        
+        source = filters.get("source")
+
+        if source:
+
+            events = [
+                event
+                for event in events
+                if event.source == source
+            ]
+
+        search = filters.get("search")
+
+        if search:
+
+            texto = search.lower()
+
+            events = [
+                event
+                for event in events
+                if (
+                    texto in event.message.lower()
+                    or
+                    texto in event.source.lower()
+                )
+            ]
+
         return events
     
     @staticmethod
