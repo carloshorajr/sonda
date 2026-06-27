@@ -5,16 +5,7 @@ class EventsController:
     @staticmethod
     def get_page_data(filters):
 
-        events = EventService.list()
-
-        level = filters.get("level")
-
-        if level:
-            events = [
-                event
-                for event in events
-                if event.level == level
-            ]
+        events = EventService.list(filters)
 
         events.sort(
             key=lambda e: e.timestamp,
@@ -25,5 +16,6 @@ class EventsController:
             "page_title": "Eventos",
             "page_subtitle": "Registro de ocorrências",
             "events": events,
-            "filters": filters
+            "filters": filters,
+            "sources": EventService.sources()
         }

@@ -64,11 +64,20 @@
 
                 <option value="">Todas</option>
 
+                {% for source in sources %}
+
+                    <option
+                        value="{{ source }}"
+                        {% if filters.get("source") == source %}selected{% endif %}
+                    >
+                        {{ source }}
+                    </option>
+
+                {% endfor %}
+
             </select>
 
         </div>
-
-        <!-- Pesquisar -->
 
         <div class="filter-item" style="min-width:260px;">
 

@@ -3,6 +3,7 @@ from backend.utils.datetime_utils import now
 from backend.models.event import Event
 from backend.repositories.event_repository import EventRepository
 
+from datetime import timedelta
 
 class EventService:
 
@@ -44,10 +45,60 @@ class EventService:
         )
     
     @staticmethod
-    def list():
+    def list(filters=None):
 
         events = EventRepository.load()
 
-        print("EVENTOS:", len(events))
+        if filters is None:
+            return events
+
+        period = filters.get("period")
+
+        if period == "today":
+
+            limite = now().replace(
+                hour=0,
+                minute=0,
+                second=0,
+                microsecond=0
+            )
+
+            events = [
+                event
+                for event in events
+                if event.timestamp >= limite
+            ]
+
+        elif period == "24h":
+
+            limite = now() - timedelta(hours=24)
+
+            events = [
+                event
+                for event in events
+                if event.timestamp >= limite
+            ]
+
+        elif period == "7d":
+
+            limite = now() - timedelta(days=7)
+
+            events = [
+                event
+                for event in events
+                if event.timestamp >= limite
+            ]
 
         return events
+    
+    @staticmethod
+    def sources():
+
+        events = EventRepository.load()
+
+        return sorted(
+            {
+                event.source
+                for event in events
+            }
+        )
