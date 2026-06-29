@@ -120,15 +120,21 @@
 
         </div>
 
-        <div class="filter-buttons">
+        <button type="submit" class="btn btn-primary">
+            Aplicar
+        </button>
 
-            <button type="submit" class="btn btn-primary">
-                Aplicar
-            </button>
+        <a href="/events" class="btn btn-outline">
+            Limpar
+        </a>
 
-            <a href="/events" class="btn btn-outline">
-                Limpar
-            </a>
+        <button
+            type="button"
+            class="btn btn-danger"
+            onclick="clearEvents()"
+        >
+            Apagar
+        </button>
 
         </div>
 
@@ -181,5 +187,24 @@
     </table>
 
 </div>
+
+<script>
+
+function clearEvents() {
+
+    if (!confirm(
+        "Deseja realmente apagar todo o histórico de eventos?\n\nEsta ação não poderá ser desfeita."
+    )) {
+        return;
+    }
+
+    fetch("/events/clear", {
+        method: "POST"
+    })
+    .then(() => window.location.reload());
+
+}
+
+</script>
 
 {% endblock %}

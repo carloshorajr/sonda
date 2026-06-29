@@ -8,6 +8,19 @@ from datetime import timedelta
 class EventService:
 
     @staticmethod
+    def system_started():
+
+        EventService.info(
+            "Sistema",
+            "Sonda iniciada."
+        )
+
+    @staticmethod
+    def system_stopped():
+
+        EventService.system_stopped()
+
+    @staticmethod
     def info(source: str, message: str):
 
         EventRepository.add(
@@ -200,3 +213,8 @@ class EventService:
             "today": today
 
         }
+    
+    @staticmethod
+    def clear():
+
+        EventRepository.clear()

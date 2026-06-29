@@ -61,3 +61,15 @@ class EventRepository:
                 indent=4,
                 ensure_ascii=False
             )
+    
+    @classmethod
+    def clear(cls):
+
+        with open(EVENTS_FILE, "w", encoding="utf-8") as f:
+
+            json.dump(
+                [],
+                f,
+                indent=4,
+                ensure_ascii=False
+            )

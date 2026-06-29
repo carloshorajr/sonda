@@ -13,8 +13,7 @@ class SystemService:
             psutil.boot_time()
         )
 
-        with open("/etc/host_hostname", "r") as f:
-            hostname = f.read().strip()
+        hostname = socket.gethostname()
 
         return {
 

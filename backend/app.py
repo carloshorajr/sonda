@@ -1,10 +1,16 @@
 from flask import Flask
 
+import atexit
+
 from backend.routes.dashboard import dashboard_bp
 from backend.routes.settings import settings_bp
 from backend.routes.metrics import metrics_bp
 from backend.routes.events import events_bp
 from backend.routes.system import system_bp
+
+from backend.services.event_service import EventService
+
+from backend.services.runtime_service import RuntimeService
 
 app = Flask(
     __name__,
@@ -18,3 +24,9 @@ app.register_blueprint(settings_bp)
 app.register_blueprint(metrics_bp)
 app.register_blueprint(events_bp)
 app.register_blueprint(system_bp)
+
+RuntimeService.application_started()
+
+atexit.register(
+    RuntimeService.application_stopped
+)

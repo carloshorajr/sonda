@@ -15,7 +15,6 @@ class SystemController:
             "page_title": "Sistema",
             "page_subtitle": "Informações da Sonda",
             "hostname": info["hostname"],
-            "sonda_nome": settings.nome,
             "cpu": info["cpu_percent"],
             "memory": info["memory_percent"],
             "disk": SystemService.get_disk_usage(),
