@@ -5,9 +5,13 @@
 
 <meta charset="utf-8">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link
+    rel="icon"
+    type="image/png"
+    href="{{ url_for('static', filename='images/favicon-32.png') }}"
+> -->
 
-<title>Sonda</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
 
@@ -62,6 +66,39 @@
 }
 
 .sidebar.collapsed .logo{
+    flex:none;
+    width:48px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.sidebar.collapsed .logo-full{
+    display:none;
+}
+
+.sidebar.collapsed .logo-icon{
+    display:block;
+    margin:0 auto;
+}
+
+.sidebar.collapsed .sidebar-header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    height:110px;
+    gap:14px;
+}
+
+.logo-full{
+    width:205px;
+    display:block;
+}
+
+.logo-icon{
+    width:48px;
     display:none;
 }
 
@@ -78,17 +115,24 @@
 
 .sidebar-header{
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    margin-bottom:30px;
+    justify-content:space-between;
+    height:82px;
+    margin-bottom:34px;
 }
 
 #toggleSidebar{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:42px;
+    height:42px;
     background:none;
     border:none;
     color:white;
     cursor:pointer;
-    font-size:22px;
+    font-size:34px;
+    flex-shrink:0;
 }
 
 *{
@@ -108,7 +152,7 @@ body{
 }
 
 .sidebar{
-    width:240px;
+    width:270px;
     background:#1f2937;
     color:white;
     padding:20px;
@@ -119,9 +163,21 @@ body{
 }
 
 .logo{
-    font-size:28px;
-    font-weight:bold;
-    margin-bottom:30px;
+    display:flex;
+    align-items:center;
+    flex:1;
+}
+
+.logo-image{
+    height:auto;
+}
+
+.logo-full{
+    display:block;
+}
+
+.logo-icon{
+    display:none;
 }
 
 .menu{
@@ -182,17 +238,11 @@ body{
 }
 
 .metric-subtitle{
-
     margin-top:8px;
-
     margin-bottom:6px;
-
     font-size:14px;
-
     color:#64748b;
-
     font-weight:500;
-
 }
 
 .metric-value{
@@ -202,131 +252,82 @@ body{
 }
 
 .settings-grid{
-
     display:grid;
-
     gap:20px;
-
 }
 
 .settings-grid .card h2{
-
     margin-bottom:20px;
-
     font-size:20px;
-
 }
 
 .form-group{
-
     display:flex;
-
     flex-direction:column;
-
     margin-bottom:18px;
-
 }
 
 .form-group label{
-
     margin-bottom:6px;
-
     color:#64748b;
-
     font-size:14px;
-
 }
 
 .form-group input,
 .form-group textarea{
-
     border:1px solid #d1d5db;
-
     border-radius:8px;
-
     padding:12px;
-
     font-size:15px;
-
     outline:none;
-
 }
 
 .form-group input:focus,
 .form-group textarea:focus{
-
     border-color:#3b82f6;
 
 }
 
 .form-row{
-
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
     gap:20px;
-
 }
 
 .btn{
-
     display:inline-flex;
-
     align-items:center;
-
     justify-content:center;
-
     height:44px;
-
-    min-width:110px;
-
-    padding:0 22px;
-
+    min-width:90px;
+    padding:0 18px;
     border-radius:10px;
-
     font-size:15px;
-
     font-weight:600;
-
     cursor:pointer;
-
     text-decoration:none;
-
     box-sizing:border-box;
-
     transition:.2s;
-
 }
 
 .btn-primary{
-
     background:#2563eb;
-
     color:white;
-
     border:none;
-
 }
 
 .btn-primary:hover{
-
     background:#1d4ed8;
-
 }
 
 .btn-danger{
-
     background:#dc2626;
     color:#fff;
     border:none;
-
 }
 
 .btn-danger:hover{
-
     background:#b91c1c;
-
 }
 
 .icon{
@@ -342,35 +343,22 @@ body{
 }
 
 input[readonly]{
-
     background:#f3f4f6;
-
     color:#555;
-
     cursor:default;
-
 }
 
 .flash{
-
     padding:14px 18px;
-
     margin:20px 0;
-
     border-radius:8px;
-
     font-weight:600;
-
 }
 
 .flash-success{
-
     background:#dcfce7;
-
     color:#166534;
-
     border:1px solid #86efac;
-
 }
 
 .table {
@@ -436,200 +424,144 @@ input[readonly]{
 }
 
 .filters-panel{
-
     display:flex;
-
-    flex-wrap:wrap;
-
-    gap:20px;
-
     align-items:flex-end;
-
-    margin-bottom:25px;
-
+    gap:16px;
+    width:100%;
 }
 
 .filter-item{
-
     display:flex;
-
     flex-direction:column;
+    gap:8px;
+}
 
-    min-width:180px;
+.filter-period{
+    width:150px;
+}
 
+.filter-level{
+    width:150px;
+}
+
+.filter-source{
+    width:180px;
+}
+
+.filter-search{
+    flex:1;
+    min-width:220px;
 }
 
 .filter-item label{
-
     margin-bottom:6px;
-
     font-weight:600;
-
 }
 
 .filter-item input,
 .filter-item select{
-
+    width:100%;
     padding:10px 12px;
-
     border:1px solid #d7dce5;
-
     border-radius:8px;
-
+    box-sizing:border-box;
     font-size:14px;
-
     background:white;
-
 }
 
 .filter-buttons{
-
     display:flex;
-
     gap:10px;
-
+    margin-left:auto;
+    align-items:flex-end;
+    white-space:nowrap;
 }
 
 .btn-outline{
-
     background:white;
-
     color:#44536a;
-
     border:1px solid #cfd7e6;
-
 }
 
 .btn-outline:hover{
-
     background:#f4f7fb;
-
 }
 
 .stats-panel{
-
     display:flex;
-
     gap:16px;
-
     margin:18px 0 28px;
-
     flex-wrap:wrap;
-
 }
 
 .stat-card{
-
+    position:relative;
+    overflow:hidden;
     flex:1;
-
     min-width:130px;
-
     background:#f8fafc;
-
     border:1px solid #e5e7eb;
-
     border-radius:12px;
-
     padding:18px;
-
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
-
     justify-content:center;
-
     transition:.2s;
-
 }
 
 .stat-card::before{
-
     content:"";
-
     position:absolute;
-
     top:0;
-
     left:0;
-
     width:100%;
-
     height:5px;
-
     background:#d1d5db;
-
 }
 
 .stat-total::before{
-
     background:#64748b;
-
 }
 
 .stat-info::before{
-
     background:#2563eb;
-
 }
 
 .stat-warning::before{
-
     background:#f59e0b;
-
 }
 
 .stat-error::before{
-
     background:#ef4444;
-
 }
 
 .stat-24h::before{
-
     background:#7c3aed;
-
 }
 
 .stat-today::before{
-
     background:#16a34a;
-
 }
 
 .stat-card:hover{
-
     transform:translateY(-2px);
-
     box-shadow:0 8px 20px rgba(0,0,0,.06);
-
 }
 
 .stat-title{
-
     font-size:.82rem;
-
     color:#64748b;
-
     font-weight:600;
-
     margin-bottom:10px;
-
     text-transform:uppercase;
-
     letter-spacing:.04em;
-
 }
 
 .stat-value{
-
     font-size:2rem;
-
     font-weight:700;
-
     color:#111827;
-
 }
 
 </style>
@@ -642,17 +574,29 @@ input[readonly]{
 
     <aside class="sidebar" id="sidebar">
 
-        <div class="sidebar-header">
+    <div class="sidebar-header">
 
-            <div class="logo">
-                SONDA
-            </div>
+        <div class="logo">
 
-            <button id="toggleSidebar">
-                <i class="fa fa-bars"></i>
-            </button>
+            <img
+                src="{{ url_for('static', filename='images/logo-light.png') }}"
+                class="logo-image logo-full"
+                alt="APTP"
+            >
+
+            <img
+                src="{{ url_for('static', filename='images/logo-icon-light.png') }}"
+                class="logo-image logo-icon"
+                alt="APTP"
+            >
 
         </div>
+
+        <button id="toggleSidebar">
+            <i class="fa fa-bars"></i>
+        </button>
+
+    </div>
 
         <nav class="menu">
 

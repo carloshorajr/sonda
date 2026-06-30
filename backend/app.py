@@ -14,7 +14,8 @@ from backend.services.runtime_service import RuntimeService
 
 app = Flask(
     __name__,
-    template_folder="../frontend/templates"
+    template_folder="../frontend/templates",
+    static_folder="../frontend/static"
 )
 
 app.secret_key = "sonda-dev"
