@@ -66,45 +66,29 @@
 
 .sidebar.collapsed{
     width:70px;
-    padding:20px 8px;
+    padding:20px 0;
 }
 
 .sidebar.collapsed .logo{
-    flex:none;
     display:flex;
     justify-content:center;
     align-items:center;
+    flex:1;
+    min-width:0;
 }
 
-.sidebar.collapsed .logo-full{
-    display:none;
-}
-
-.sidebar.collapsed .logo-icon{
-    display:block;
-    margin:0 auto;
+.sidebar.collapsed .logo-window{
+    width:70px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    overflow:hidden;
 }
 
 .sidebar.collapsed .sidebar-header{
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    height:auto;
-    padding:0;
-    margin-bottom:24px;
-}
-
-.logo-full{
-    width:170px;
-    max-width:100%;
-    display:block;
-}
-
-.logo-icon{
-    width:52px;
-    height:auto;
-    display:none;
+    position:relative;
+    height:82px;
 }
 
 .sidebar.collapsed .label{
@@ -124,24 +108,30 @@
     justify-content:space-between;
     height:82px;
     margin-bottom:34px;
+    gap:12px;
+}
+
+.logo-box{
+    flex:1;
+    min-width:0;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
 }
 
 #toggleSidebar{
+    flex:0 0 42px;
     width:42px;
     height:42px;
     display:flex;
     align-items:center;
     justify-content:center;
-    margin:0;
-    padding:0;
     background:none;
     border:none;
     color:#fff;
     cursor:pointer;
     font-size:34px;
-    flex:0 0 42px;
-    position:relative;
-    z-index:20;
+    padding:0;
 }
 
 *{
@@ -164,19 +154,35 @@ body{
     margin-right:0;
 }
 
-.sidebar.collapsed #toggleSidebar{
-    margin:0;
-}
-
-.logo{
+.logo-expanded{
+    width:170px;
+    height:60px;
+    overflow:hidden;
     display:flex;
     align-items:center;
-    flex:1;
-    min-width:0;
+}
+
+.logo-collapsed{
+    width:60px;
+    height:60px;
+    overflow:hidden;
+    display:none;
+    align-items:center;
 }
 
 .logo-image{
+    width:170px;
     height:auto;
+    display:block;
+    flex:none;
+}
+
+.sidebar.collapsed .logo-expanded{
+    display:none;
+}
+
+.sidebar.collapsed .logo-collapsed{
+    display:flex;
 }
 
 .menu{
@@ -576,29 +582,33 @@ input[readonly]{
 
     <aside class="sidebar" id="sidebar">
 
-    <div class="sidebar-header">
+        <div class="sidebar-header">
 
-        <div class="logo">
+            <div class="logo-box">
 
-            <img
-                src="{{ url_for('static', filename='images/logo-light.png') }}"
-                class="logo-image logo-full"
-                alt="APTP"
-            >
+                <div class="logo-expanded">
+                    <img
+                        src="{{ url_for('static', filename='images/logo-light.png') }}"
+                        class="logo-image"
+                        alt="APTP"
+                    >
+                </div>
 
-            <img
-                src="{{ url_for('static', filename='images/logo-icon-light.png') }}"
-                class="logo-image logo-icon"
-                alt="APTP"
-            >
+                <div class="logo-collapsed">
+                    <img
+                        src="{{ url_for('static', filename='images/logo-light.png') }}"
+                        class="logo-image"
+                        alt="APTP"
+                    >
+                </div>
+
+            </div>
+
+            <button id="toggleSidebar">
+                <i class="fa fa-bars"></i>
+            </button>
 
         </div>
-
-        <button id="toggleSidebar">
-            <i class="fa fa-bars"></i>
-        </button>
-
-    </div>
 
         <nav class="menu">
 
