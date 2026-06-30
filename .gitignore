@@ -45,3 +45,6 @@ state/**
 
 tmp/**
 !tmp/.gitkeep
+
+node_modules/
+frontend/static/dist/

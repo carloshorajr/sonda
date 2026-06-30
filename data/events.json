@@ -1,1 +1,98 @@
-[]
+[
+    {
+        "timestamp": "2026-06-30T17:22:12.884625-03:00",
+        "level": "INFO",
+        "source": "Sistema",
+        "message": "Sonda encerrada."
+    },
+    {
+        "timestamp": "2026-06-30T17:33:19.008923-03:00",
+        "level": "INFO",
+        "source": "Sistema",
+        "message": "Sonda iniciada."
+    },
+    {
+        "timestamp": "2026-06-30T17:33:19.798966-03:00",
+        "level": "WARNING",
+        "source": "Sistema",
+        "message": "Inicialização após desligamento inesperado."
+    },
+    {
+        "timestamp": "2026-06-30T17:33:19.801002-03:00",
+        "level": "INFO",
+        "source": "Sistema",
+        "message": "Sonda iniciada."
+    },
+    {
+        "timestamp": "2026-06-30T17:45:10.484524-03:00",
+        "level": "INFO",
+        "source": "Sistema",
+        "message": "Sonda encerrada."
+    },
+    {
+        "timestamp": "2026-06-30T17:45:12.335394-03:00",
+        "level": "INFO",
+        "source": "Sistema",
+        "message": "Sonda iniciada."
+    },
+    {
+        "timestamp": "2026-06-30T17:45:13.004819-03:00",
+        "level": "WARNING",
+        "source": "Sistema",
+        "message": "Inicialização após desligamento inesperado."
+    },
+    {
+        "timestamp": "2026-06-30T17:45:13.016919-03:00",
+        "level": "INFO",
+        "source": "Sistema",
+        "message": "Sonda iniciada."
+    },
+    {
+        "timestamp": "2026-06-30T17:51:02.149073-03:00",
+        "level": "INFO",
+        "source": "Sistema",
+        "message": "Sonda encerrada."
+    },
+    {
+        "timestamp": "2026-06-30T17:51:03.556766-03:00",
+        "level": "INFO",
+        "source": "Sistema",
+        "message": "Sonda iniciada."
+    },
+    {
+        "timestamp": "2026-06-30T17:51:04.224176-03:00",
+        "level": "WARNING",
+        "source": "Sistema",
+        "message": "Inicialização após desligamento inesperado."
+    },
+    {
+        "timestamp": "2026-06-30T17:51:04.226705-03:00",
+        "level": "INFO",
+        "source": "Sistema",
+        "message": "Sonda iniciada."
+    },
+    {
+        "timestamp": "2026-06-30T17:53:36.885171-03:00",
+        "level": "INFO",
+        "source": "Sistema",
+        "message": "Sonda encerrada."
+    },
+    {
+        "timestamp": "2026-06-30T17:53:38.437964-03:00",
+        "level": "INFO",
+        "source": "Sistema",
+        "message": "Sonda iniciada."
+    },
+    {
+        "timestamp": "2026-06-30T17:53:39.104438-03:00",
+        "level": "WARNING",
+        "source": "Sistema",
+        "message": "Inicialização após desligamento inesperado."
+    },
+    {
+        "timestamp": "2026-06-30T17:53:39.107995-03:00",
+        "level": "INFO",
+        "source": "Sistema",
+        "message": "Sonda iniciada."
+    }
+]

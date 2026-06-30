@@ -69,21 +69,8 @@
     padding:20px 0;
 }
 
-.sidebar.collapsed .logo{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex:1;
-    min-width:0;
-}
-
 .sidebar.collapsed .logo-window{
-    width:70px;
-    height:60px;
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
-    overflow:hidden;
+    width:60px;
 }
 
 .sidebar.collapsed .sidebar-header{
@@ -104,23 +91,31 @@
 
 .sidebar-header{
     display:flex;
-    align-items:center;
-    justify-content:space-between;
-    height:82px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
     margin-bottom:34px;
-    gap:12px;
 }
 
 .logo-box{
-    flex:1;
-    min-width:0;
+    width:100%;
     display:flex;
+    justify-content:flex-start;
     align-items:center;
     overflow:hidden;
 }
 
+.logo-window{
+    width:170px;
+    height:60px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    transition:width .3s ease;
+}
+
 #toggleSidebar{
-    flex:0 0 42px;
     width:42px;
     height:42px;
     display:flex;
@@ -154,35 +149,11 @@ body{
     margin-right:0;
 }
 
-.logo-expanded{
-    width:170px;
-    height:60px;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-}
-
-.logo-collapsed{
-    width:60px;
-    height:60px;
-    overflow:hidden;
-    display:none;
-    align-items:center;
-}
-
 .logo-image{
+    display:block;
     width:170px;
     height:auto;
-    display:block;
-    flex:none;
-}
-
-.sidebar.collapsed .logo-expanded{
-    display:none;
-}
-
-.sidebar.collapsed .logo-collapsed{
-    display:flex;
+    flex-shrink:0;
 }
 
 .menu{
@@ -582,33 +553,23 @@ input[readonly]{
 
     <aside class="sidebar" id="sidebar">
 
-        <div class="sidebar-header">
-
-            <div class="logo-box">
-
-                <div class="logo-expanded">
-                    <img
-                        src="{{ url_for('static', filename='images/logo-light.png') }}"
-                        class="logo-image"
-                        alt="APTP"
-                    >
-                </div>
-
-                <div class="logo-collapsed">
-                    <img
-                        src="{{ url_for('static', filename='images/logo-light.png') }}"
-                        class="logo-image"
-                        alt="APTP"
-                    >
-                </div>
-
-            </div>
+        <div class="sidebar-header">    
 
             <button id="toggleSidebar">
                 <i class="fa fa-bars"></i>
             </button>
 
-        </div>
+            <div class="logo-box">
+                <div class="logo-window">
+                    <img
+                        src="{{ url_for('static', filename='images/logo-light.png') }}"
+                        class="logo-image"
+                        alt="APTP"
+                    >
+                </div>
+            </div>
+
+</div>
 
         <nav class="menu">
 
