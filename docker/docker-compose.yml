@@ -1,12 +1,12 @@
 services:
 
-  sonda:
+  aptp:
 
     build:
       context: ..
       dockerfile: docker/Dockerfile
 
-    container_name: sonda
+    container_name: aptp
 
     restart: unless-stopped
 

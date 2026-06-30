@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
     iw \
     ethtool \
     dbus \
+    nodejs \
+    npm \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
