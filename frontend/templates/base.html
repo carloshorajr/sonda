@@ -299,7 +299,6 @@ body{
     align-items:center;
     justify-content:center;
     height:44px;
-    min-width:90px;
     padding:0 18px;
     border-radius:10px;
     font-size:15px;
@@ -431,26 +430,13 @@ input[readonly]{
 }
 
 .filter-item{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
-.filter-period{
-    width:150px;
-}
-
-.filter-level{
-    width:150px;
-}
-
-.filter-source{
-    width:180px;
+    flex:0 1 150px;
+    min-width:0;
 }
 
 .filter-search{
-    flex:1;
-    min-width:220px;
+    flex:1 1 auto;
+    min-width:120px;
 }
 
 .filter-item label{
@@ -471,10 +457,11 @@ input[readonly]{
 
 .filter-buttons{
     display:flex;
-    gap:10px;
-    margin-left:auto;
     align-items:flex-end;
-    white-space:nowrap;
+    gap:10px;
+    flex-wrap:nowrap;
+    flex-shrink:0;
+    margin-left:auto;
 }
 
 .btn-outline{
