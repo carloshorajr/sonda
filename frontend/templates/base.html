@@ -34,6 +34,35 @@
 
         </div>
 
+        <nav class="sidebar-menu">
+
+            <a href="{{ url_for('dashboard.dashboard') }}" class="menu-item">
+                <i class="fa fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="{{ url_for('settings.settings') }}" class="menu-item">
+                <i class="fa fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+
+            <a href="{{ url_for('metrics.metrics') }}" class="menu-item">
+                <i class="fa fa-bar-chart"></i>
+                <span>Métricas</span>
+            </a>
+
+            <a href="{{ url_for('events.events') }}" class="menu-item">
+                <i class="fa fa-list-alt"></i>
+                <span>Eventos</span>
+            </a>
+
+            <a href="{{ url_for('system.system') }}" class="menu-item">
+                <i class="fa fa-desktop"></i>
+                <span>Sistema</span>
+            </a>
+
+        </nav>
+
     </aside>
 
     <main class="content">
