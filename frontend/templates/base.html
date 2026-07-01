@@ -17,62 +17,20 @@
 
 <body>
 
-<div class="layout">
+    <div class="layout">
 
-    <aside id="sidebar" class="sidebar">
+        <aside id="sidebar" class="sidebar">
 
-        <div class="sidebar-header">
+        <img
+            src="{{ url_for('static', filename='images/logo-light.png') }}"
+            class="sidebar-logo"
+            alt="APTP">
 
-            <div class="sidebar-brand">
+        <button id="toggleSidebar" class="sidebar-toggle">
+            <i class="fa fa-bars"></i>
+        </button>
 
-                <img
-                    src="{{ url_for('static', filename='images/logo-light.png') }}"
-                    class="logo-full"
-                    alt="APTP">
-
-                <img
-                    src="{{ url_for('static', filename='images/icon-light.png') }}"
-                    class="logo-icon"
-                    alt="APTP">
-
-            </div>
-
-            <button id="toggleSidebar" class="sidebar-toggle">
-                <i class="fa fa-bars"></i>
-            </button>
-
-        </div>
-
-        <nav class="sidebar-nav">
-
-            <a href="/" class="nav-item">
-                <i class="fa fa-home"></i>
-                <span>Dashboard</span>
-            </a>
-
-            <a href="/settings" class="nav-item">
-                <i class="fa fa-cog"></i>
-                <span>Configurações</span>
-            </a>
-
-            <a href="/metrics" class="nav-item">
-                <i class="fa fa-bar-chart"></i>
-                <span>Métricas</span>
-            </a>
-
-            <a href="/events" class="nav-item">
-                <i class="fa fa-list-alt"></i>
-                <span>Eventos</span>
-            </a>
-
-            <a href="/system" class="nav-item">
-                <i class="fa fa-desktop"></i>
-                <span>Sistema</span>
-            </a>
-
-        </nav>
-
-</aside>
+    </aside>
 
     <main class="content">
 
