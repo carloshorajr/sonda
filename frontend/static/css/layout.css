@@ -1,0 +1,17 @@
+:root{
+    --sidebar-expanded-width:240px;
+    --sidebar-collapsed-width:70px;
+    --page-background:#eef2f7;
+    --sidebar-background:#232c3b;
+    --card-radius:18px;
+    --transition-speed:.25s;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:var(--page-background);
+}
