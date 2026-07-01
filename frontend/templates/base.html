@@ -36,27 +36,32 @@
 
         <nav class="sidebar-menu">
 
-            <a href="{{ url_for('dashboard.dashboard') }}" class="menu-item">
+            <a href="/"
+            class="menu-item {% if current_page == '/' %}active{% endif %}">
                 <i class="fa fa-home"></i>
                 <span>Dashboard</span>
             </a>
 
-            <a href="{{ url_for('settings.settings') }}" class="menu-item">
+            <a href="/settings"
+            class="menu-item {% if current_page == '/settings' %}active{% endif %}">
                 <i class="fa fa-cog"></i>
                 <span>Configurações</span>
             </a>
 
-            <a href="{{ url_for('metrics.metrics') }}" class="menu-item">
+            <a href="/metrics"
+            class="menu-item {% if current_page == '/metrics' %}active{% endif %}">
                 <i class="fa fa-bar-chart"></i>
                 <span>Métricas</span>
             </a>
 
-            <a href="{{ url_for('events.events') }}" class="menu-item">
+            <a href="/events"
+            class="menu-item {% if current_page == '/events' %}active{% endif %}">
                 <i class="fa fa-list-alt"></i>
                 <span>Eventos</span>
             </a>
 
-            <a href="{{ url_for('system.system') }}" class="menu-item">
+            <a href="/system"
+            class="menu-item {% if current_page == '/system' %}active{% endif %}">
                 <i class="fa fa-desktop"></i>
                 <span>Sistema</span>
             </a>
