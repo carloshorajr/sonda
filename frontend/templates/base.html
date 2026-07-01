@@ -22,18 +22,16 @@
 
         <div class="sidebar-header">    
 
-            <button id="toggleSidebar">
+            <button id="toggleSidebar" class="sidebar-toggle">
                 <i class="fa fa-bars"></i>
             </button>
 
-            <div class="logo-box">
-                <div class="logo-window">
-                    <img
-                        src="{{ url_for('static', filename='images/logo-light.png') }}"
-                        class="logo-image"
-                        alt="APTP"
-                    >
-                </div>
+            <div class="sidebar-brand">
+                <img
+                    src="{{ url_for('static', filename='images/logo-light.png') }}"
+                    alt="APTP"
+                    class="sidebar-logo"
+                >
             </div>
 
 </div>

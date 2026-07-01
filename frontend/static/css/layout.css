@@ -15,3 +15,40 @@ body{
     margin:0;
     background:var(--page-background);
 }
+
+.sidebar-header{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:110px;
+    padding:16px;
+}
+
+.sidebar-toggle{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:36px;
+    height:36px;
+    border:none;
+    background:transparent;
+    color:#fff;
+    font-size:28px;
+    cursor:pointer;
+    z-index:20;
+}
+
+.sidebar-brand{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+}
+
+.sidebar-logo{
+    display:block;
+    width:170px;
+    height:auto;
+    max-width:100%;
+}
