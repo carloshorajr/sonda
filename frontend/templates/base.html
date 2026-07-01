@@ -17,18 +17,22 @@
 
 <body>
 
-    <div class="layout">
+<div class="layout">
 
-        <aside id="sidebar" class="sidebar">
+    <aside id="sidebar" class="sidebar">
 
-        <img
-            src="{{ url_for('static', filename='images/logo-light.png') }}"
-            class="sidebar-logo"
-            alt="APTP">
+        <div class="sidebar-header">
 
-        <button id="toggleSidebar" class="sidebar-toggle">
-            <i class="fa fa-bars"></i>
-        </button>
+            <div class="sidebar-logo-wrap">
+
+                <img
+                    src="{{ url_for('static', filename='images/logo-light.png') }}"
+                    class="sidebar-logo"
+                    alt="APTP">
+
+            </div>
+
+        </div>
 
     </aside>
 
@@ -80,29 +84,6 @@
 </main>
 
 </div>
-
-<script>
-
-const sidebar = document.getElementById("sidebar");
-const toggle = document.getElementById("toggleSidebar");
-
-if (localStorage.getItem("sidebarState") === "collapsed") {
-    sidebar.classList.add("collapsed");
-}
-
-toggle.addEventListener("click", () => {
-
-    sidebar.classList.toggle("collapsed");
-
-    if (sidebar.classList.contains("collapsed")) {
-        localStorage.setItem("sidebarState", "collapsed");
-    } else {
-        localStorage.setItem("sidebarState", "expanded");
-    }
-
-});
-
-</script>
 
 </body>
 </html>
