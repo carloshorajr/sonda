@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='dist/app.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/legacy.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar-v2.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,64 +19,60 @@
 
 <div class="layout">
 
-    <aside class="sidebar" id="sidebar">
+    <aside id="sidebar" class="sidebar">
 
-        <div class="sidebar-header">    
+        <div class="sidebar-header">
+
+            <div class="sidebar-brand">
+
+                <img
+                    src="{{ url_for('static', filename='images/logo-light.png') }}"
+                    class="logo-full"
+                    alt="APTP">
+
+                <img
+                    src="{{ url_for('static', filename='images/icon-light.png') }}"
+                    class="logo-icon"
+                    alt="APTP">
+
+            </div>
 
             <button id="toggleSidebar" class="sidebar-toggle">
                 <i class="fa fa-bars"></i>
             </button>
 
-            <div class="sidebar-brand">
-                <img
-                    src="{{ url_for('static', filename='images/logo-light.png') }}"
-                    alt="APTP"
-                    class="sidebar-logo"
-                >
-            </div>
+        </div>
 
-</div>
+        <nav class="sidebar-nav">
 
-        <nav class="menu">
-
-            <a href="/" class="{% if current_page == '/' %}active{% endif %}">
-                <span class="icon">
-                    <i class="fa fa-home"></i>
-                </span>
-                <span class="label">Dashboard</span>
+            <a href="/" class="nav-item">
+                <i class="fa fa-home"></i>
+                <span>Dashboard</span>
             </a>
 
-            <a href="/settings" class="{% if current_page == '/settings' %}active{% endif %}">
-                <span class="icon">
-                    <i class="fa fa-cog"></i>
-            </span>
-                <span class="label">Configurações</span>
+            <a href="/settings" class="nav-item">
+                <i class="fa fa-cog"></i>
+                <span>Configurações</span>
             </a>
 
-            <a href="/metrics" class="{% if current_page == '/metrics' %}active{% endif %}">
-                <span class="icon">
-                    <i class="fa fa-bar-chart"></i>
-                </span>
-                <span class="label">Métricas</span>
+            <a href="/metrics" class="nav-item">
+                <i class="fa fa-bar-chart"></i>
+                <span>Métricas</span>
             </a>
 
-            <a href="/events" class="{% if current_page == '/events' %}active{% endif %}">
-                <span class="icon">
-                    <i class="fa fa-list-alt"></i>
-                </span>
-                <span class="label">Eventos</span>
+            <a href="/events" class="nav-item">
+                <i class="fa fa-list-alt"></i>
+                <span>Eventos</span>
             </a>
 
-            <a href="/system" class="{% if current_page == '/system' %}active{% endif %}">
-                <span class="icon">
-                    <i class="fa fa-desktop"></i>
-                </span>
-                <span class="label">Sistema</span>
+            <a href="/system" class="nav-item">
+                <i class="fa fa-desktop"></i>
+                <span>Sistema</span>
             </a>
 
         </nav>
 
-    </aside>
+</aside>
 
     <main class="content">
 
